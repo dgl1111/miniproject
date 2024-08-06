@@ -33,6 +33,8 @@
 			out.println("<th>선택</th>");
 			out.println("<th>이름</th>");
 			out.println("<th>학번</th>");
+			out.println("</tr>");
+			
 			
 			
 	

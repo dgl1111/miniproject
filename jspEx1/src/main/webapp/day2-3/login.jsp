@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		/* session.removeAttribute("userId"); */
+		/* session 삭제하는 방법. 그렇게 많이 안쓴다. */
+		session.invalidate();
+		/* session을 10개 넣더라도 한번에 삭제 가능 */
+		/* out.println(session.getAttribute("userId")); */
+	%>
 	<form action="login_result.jsp" >
 	<%@include file="db2.jsp"%>	
 	<div>

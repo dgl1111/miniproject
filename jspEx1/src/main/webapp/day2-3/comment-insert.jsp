@@ -27,11 +27,13 @@
 		ResultSet rs = null;
 		Statement stmt = null;
 		String boardNo = request.getParameter("boardNo");
-		
+		String comment = request.getParameter("comment");
+		String sessionId = (String) session.getAttribute("userId");
 		try{
 			stmt = conn.createStatement();
-			String querytext = "SELECT * FROM TBL_BOARD";
-			rs = stmt.executeQuery(querytext);
+			String querytext = 
+					"INSERT INTO TBL_COMMENT VALUES (" + "NULL, " + boardNo + ",'" + sessionId + "', '" + comment + "', " + "0, now(), now()" + ")";
+			stmt.executeUpdate(querytext);
 		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
@@ -40,4 +42,9 @@
 
 </body>
 </html>
+<script>
+ 	alert("저장되었습니다.");
+	window.close();
+	window.opener.fnReload();
+</script>
 ​

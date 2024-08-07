@@ -16,7 +16,12 @@
 	 padding: 10px;
 	}
 
-}
+	.comment{
+	width: 330px;
+	height: 20px;
+	padding: 5px;
+	margin: 10px 0;
+	}
 	
 </style>
 
@@ -39,12 +44,46 @@
 				<input type="hidden" value="<%= rs.getString("boardNo")%>" name="boardNo">
 				<div> 제목 : <%= rs.getString("title") %></div>
 				<div> 내용 : <%= rs.getString("contents") %></div>
+				
+							
+	<% 
+		String sessionId = (String) session.getAttribute("userId");
+		String sessionstatus = (String) session.getAttribute("status");
+	
+		if(rs.getString("userId").equals(sessionId) || sessionstatus.equals("A")){
+			
+		
+	%>				
 				<button type="submit">삭제</button>
 				<button type="button" onclick="fnUpdate()">수정</button>
+	<% 			
+				}
+	%>
+				<hr>
+				<div>댓글 : 
+					<input class="comment" type="text" placeholder="댓글 쓰세요" name="comment">
+					<button type="button" onclick="fnComment()">등록</button>
+				</div>
+			
+			<%
+				querytext = "SELECT * FROM TBL_COMMENT WHERE BOARDNO = " + boardNo;
+				rs = stmt.executeQuery(querytext);
+				while(rs.next()){
+			%>
+				<div> <%= rs.getString("userId") %> : <%= rs.getString("comment") %> </div>
+			
+			<%	} %>		
+	
+	
+	
+	
+				
 	<%
+			
 			}else{
-				out.println("삭제된 계시물입니다.");
+				out.println("삭제된 게시글 입니다.");
 			}
+	
 		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
@@ -60,5 +99,16 @@
 		/* action의 값 바꿔서 */
 		form.submit();
 		
+	}
+	
+	function fnComment(userId){
+		var form = document.board;
+		console.log(form.boardNo.value);
+		var url = "comment-insert.jsp?boardNo="+ form.boardNo.value + "&comment=" + form.comment.value;
+		window.open(url , "reset", "width=500, height=500");
+	}
+	
+	function fnReload(){
+		location.reload();
 	}
 </script>

@@ -1,4 +1,3 @@
-<%@page import="java.lang.ProcessBuilder.Redirect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +11,7 @@
 	<% 
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
+		String boardNo = request.getParameter("boardNo");
 		
 
 		ResultSet rs = null;
@@ -21,10 +21,9 @@
 		try{
 			
 			stmt = conn.createStatement();
-			String query = "INSERT INTO TBL_BOARD VALUES"+"("+ "NULL, '" + title + "', '" + contents+"', 0, 'user1', 'number', now(), now()"+")";
+			String query = "UPDATE TBL_BOARD SET " + "title = tile, contents = contents" + "WHERE boardNo =" + boardNo + "'";
 			stmt.executeUpdate(query);
-			System.out.println("쿼리문: " + query);
-			response.sendRedirect("list.jsp");
+			response.sendRedirect("list2.jsp");
 			
 
 			
@@ -39,3 +38,7 @@
 
 </body>
 </html>
+<script>
+	alert("수정되었다");
+	location.href = "board-view.jsp?boardNo="+boardNo;
+</script>

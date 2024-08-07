@@ -1,3 +1,4 @@
+<%@page import="org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor"%>
 <%@page import="java.awt.Checkbox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,6 +21,7 @@
 
 </head>
 <body>
+	<div><button onclick="location.href='login.jsp'">로그아웃</button></div>
 	<%@include file="db2.jsp"%>	
 	<%
 	ResultSet rs = null;
@@ -28,7 +30,15 @@
 	
 	try{
 		stmt = conn.createStatement();
-		String querytext = "SELECT * FROM TBL_BOARD";
+		String querytext = 
+				  "SELECT B.boardNo, title, B.cnt, cdatetime, NAME, commentCnt "
+				+ "FROM tbl_board B "
+				+ "INNER JOIN tbl_user U ON B.userId = U.userId "
+				+ "LEFT JOIN ( "
+				+ 	"SELECT COUNT(*) AS commentCnt, boardNo "
+				+	"FROM tbl_comment "
+				+	"GROUP BY boardNo "
+				+ ") C ON B.boardNo = C.boardNo";
 		rs = stmt.executeQuery(querytext);
 	%>
 		<table>
@@ -41,14 +51,19 @@
 		</tr>			
 	<%
 	while (rs.next()) {
+		String commentCnt = "";
+		if(rs.getString("commentCnt") != null){
+			commentCnt = "(" + rs.getString("commentCnt") + ")";
+		} 
 	%>
 		<tr>
 			<td> <%= rs.getString("boardNo") %></td>
-			<td>
-				<a href="#" onclick="fnView('<%= rs.getString("boardNo") %>')"><%= rs.getString("title") %></a>
+			<td> 
+				<a href="#" onclick="fnView('<%= rs.getString("boardNo") %>')">
+					<%= rs.getString("title") %> <%= commentCnt %>
+				</a>
 			</td>
-			<%-- <td> <%= rs.getString("title") %></td> --%>
-			<td> <%= rs.getString("userId") %></td>
+			<td> <%= rs.getString("name") %></td>
 			<td> <%= rs.getString("cnt") %></td>
 			<td> <%= rs.getString("cdatetime") %></td>
 		</tr>

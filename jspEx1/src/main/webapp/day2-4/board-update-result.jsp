@@ -21,7 +21,7 @@
 		try{
 			
 			stmt = conn.createStatement();
-			String query = "UPDATE TBL_BOARD SET " + "title = tile, contents = contents" + "WHERE boardNo =" + boardNo + "'";
+			String query = "UPDATE TBL_BOARD SET " + title = "", contents = "" + "WHERE boardNo =" + boardNo + "'";
 			stmt.executeUpdate(query);
 			response.sendRedirect("list2.jsp");
 			

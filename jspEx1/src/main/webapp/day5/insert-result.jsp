@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,38 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="db2.jsp"%>	
-	<% 
+	<%@include file="db.jsp"%>
+	<%
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String boardNo = request.getParameter("boardNo");
-		
-
+		String userId = "user1"; // 이건 그냥 하드코딩으로 이대로 쓰세요.
 		ResultSet rs = null;
-		Statement stmt = null;
-
-		
+		Statement stmt = null;	
 		try{
-			
 			stmt = conn.createStatement();
-			String query = "UPDATE TBL_BOARD SET '" + title + "','" + contents + "' " + "WHERE boardNo = '" + boardNo + "'";
+			String query = "INSERT INTO TBL_BOARD " + " VALUES ("+ " NULL, '" + title + "', '" + contents + "', 0 , '" + userId + "', 'number', now(), now()" + ")";
 			stmt.executeUpdate(query);
-			response.sendRedirect("list2.jsp");
-			
-
-			
+			out.println("저장되었다!");
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
 		}
-		
-		
-		
-		
 	%>
-
 </body>
 </html>
-<script>
-	alert("수정되었다");
-	location.href = "board-view.jsp?boardNo="+ boardNo;
-</script>

@@ -29,7 +29,6 @@
     <div><button onclick="location.href='login.jsp'">로그아웃</button></div>
     <%@ include file="db2.jsp" %>
     <sql:query var="result" dataSource="${dataSource}">
-    	<!-- qeury의 결과가 result에 담긴다. -->	<!-- db에서의 setDataSource -->
         SELECT B.boardNo, title, B.cnt, cdatetime, NAME, commentCnt
         FROM tbl_board B
         INNER JOIN tbl_user U ON B.userId = U.userId
@@ -39,6 +38,7 @@
             GROUP BY boardNo
         ) C ON B.boardNo = C.boardNo
     </sql:query>
+    <!-- qeury의 결과가 result에 담긴다. -->	<!-- db에서의 setDataSource -->
 
     <table>
         <tr>

@@ -1,10 +1,9 @@
+<%@page import="org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor"%>
+<%@page import="java.awt.Checkbox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,56 +11,68 @@
 <title>Insert title here</title>
 
 <style>
-    table, th, tr, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 10px;
-    }
-    a:visited, a:link {
-        color: black;
-        text-decoration: none;
-        font-weight: bold;
-    }
+	table, th,  tr,  td{
+	 border : 1px solid black ;
+	 border-collapse: collapse;
+	 padding: 10px;
+	}
+	
 </style>
 
 </head>
 <body>
-    <%@ include file="db2.jsp" %>
-    <sql:query var="result" dataSource="${dataSource}">
-        SELECT B.boardNo, title, NAME, cdatetime, B.cnt
-        FROM tbl_board B
-        INNER JOIN tbl_user U ON B.userId = U.userId  
-    </sql:query>
-    <!-- qeury의 결과가 result에 담긴다. -->	<!-- db에서의 setDataSource -->
+	<%@include file="db2.jsp"%>	
+	<%
+	ResultSet rs = null;
+	Statement stmt = null;
+	System.out.println(session.getAttribute("userId"));
+	
+	try{
+		stmt = conn.createStatement();
+		String querytext = 
+				  "SELECT B.boardNo, title, NAME, B.cnt, cdatetime, B.userId " + "FROM tbl_board B " + "INNER JOIN tbl_user U ON B.userId = U.userId";
+		rs = stmt.executeQuery(querytext);
+	%>
+		<table>
+		<tr>
+			<th> 번호 </th>
+			<th> 제목 </th>
+			<th> 작성자 </th>
+			<th> 조회수 </th>
+			<th> 작성일 </th>
+		</tr>			
+	
+		<tr>
+			<td> <%= rs.getString("boardNo") %></td>
+			<td> 
+				<a href="javascript:;" onclick="fnView('<%= rs.getString("boardNo") %>')">
+					<%= rs.getString("title") %>
+				</a>
+			</td>
+			<td>
+			  	<a href="javascript:;" onclick="fnInfo('<%= rs.getString("userId") %>')">
+			  		<%= rs.getString("name") %>
+			  	</a> 
+			 </td>
+			<td> <%= rs.getString("cnt") %></td>
+			<td> <%= rs.getString("cdatetime") %></td>
+		</tr>
+	
+	</table>
+	<button onclick="location.href='boardWrite.jsp'">글쓰기</button>
+	<%
+	} catch(SQLException ex) {
+		out.println("SQLException : " + ex.getMessage());
+	}
+	%>
 
-    <table>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>신청일</th>
-            <th>조회수</th>
-        </tr>
-        <c:forEach var="row" items="${result.rows}">
-        <!-- 반복문 돌리는 태그 -->
-            <tr>
-                <td>${row.boardNo}</td>
-                <td>
-                    <a href="#" onclick="fnView('${row.boardNo}')">
-                        ${row.title}
-                    </a>
-                </td>
-                <td>${row.NAME}</td>
-                <td>${row.cdatetime}</td>
-                <td>${row.cnt}</td>   
-            </tr>
-        </c:forEach>
-    </table>
 </body>
 </html>
-
 <script>
-    function fnView(boardNo){
-        location.href="board-view.jsp?boardNo="+boardNo;
-    }
+	function fnView(boardNo) {
+		location.href="boardView.jsp?boardNo="+boardNo;
+	}
+	function fnInfo(userId){
+		location.href="myPage.jsp?userId="+userId;
+	}
 </script>

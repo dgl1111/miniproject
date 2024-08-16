@@ -7,45 +7,179 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	
 	h3{
-		border-bottom: 1px solid #707070;
+		font-size: 33px;
+	    color: #292929;
+	    line-height: normal;
+	    padding-bottom: 15px;
+	    border-bottom: 1px solid #707070;
+	    margin-top: 0px;
+	    margin-bottom: 23px;
+	    font-weight: 500;
+	    font-family: 'Noto Sans KR', sans-serif;
 	}
+	
+	h4{
+	
+		margin-top: 30px;
+	    padding: 16px 15px 15px;
+	    background: #f4f5f9;
+	    border-top: 1px solid #c4c9ce;
+	    line-height: 130%;
+	    font-weight: 500;
+	    font-size: 19px;
+	    position: relative;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    color: #111;
+    
+	}
+	
+	.info{
+		    padding: 20px;
+	}
+	
+	.title{
+		position: relative;
+	    color: #111;
+	    font-weight: 500;
+	    line-height: 24px;
+	    border: 0;
+	    background: #fff;
+	    text-align: left;
+	    padding: 8px 0;
+	    float: left;
+	    display: table-cell;
+	    vertical-align: top;
+	    width: 170px;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    font-size: 15px;
+	       margin: 0;
+	}
+	
+	input{
+		height: 31px;
+		font-size: 15px;
+	    border: 1px solid #d2d2d2;
+	    text-indent: 5px;
+	    background: #fff;
+	    color: #555;
+	    vertical-align: middle;
+	    width: 260px;
+	    margin-right: 25px;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    font-weight: 400;
+	    line-height: 18px;
+	    text-align: left;
+	    padding: 8px 0;
+	    font-weight: normal;
+	
+	} 
+	
+	select{
+	
+    height: 39px;
+    font-size: 15px;
+    border: 1px solid #d2d2d2;
+    text-indent: 5px;
+    background: #fff;
+    color: #555;
+    vertical-align: middle;
+    width: 260px;
+    margin-right: 25px;
+    text-align: left;
+    padding: 8px 0;
+	}
+	
+	input[type="radio"] {
+		margin: 2px 10px 2px 0;
+		height: 20px;
+		width: 100px;
+	}
+	
+	.btn{
+		margin-top: 20px;
+    text-align: right;
+    line-height: 130%;
+    font-weight: 400;
+    font-size: 15px;
+	}
+	
+	.back{
+	position: relative;
+    width: 110px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 24px;
+    color: #fff;
+    background: #888;
+    margin: 0 2px;
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: top;
+    padding: 0;
+    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.go{
+		position: relative;
+	    width: 110px;
+	    height: 48px;
+	    line-height: 48px;
+	    border-radius: 24px;
+	    color: #fff;
+	    background: #1699dc;
+	    margin: 0 2px;
+	    display: inline-block;
+	    font-size: 15px;
+	    text-align: center;
+	    vertical-align: top;
+	    padding: 0;
+	    font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	
+
 </style>
 </head>
+<jsp:include page="header.jsp"></jsp:include>
 <body>
 	<h3>회원가입</h3>
 	
 	
-	<form action="Main.jsp" name="user">
+	<h4>회원정보 필수입력</h4>
+	
+	<form action="main.jsp" name="user">
 	<!-- form 태그의 역할 : form 태그안에 있는 버튼을 눌렀을떄 form 태그에 있는 action 속성이 실행(action 속성 안에 있는 페이지로 이동) -->
-		<div>
+		<div class="info">
 
 		<div>
-			<div>이름</div>
+			<label class="title">이름</label>
 			 <input type="text" name="userName"> 
 		</div>
-			
+		<br>	
 		<div>
-			<div>아이디</div> 
-			<input type="text" name="userId" id="userId" maxlength="12">
-			<p id="IdCheck();"></p>
-			<span> 4~12자의 영문 대 소문자, 숫자를 입력할 수 있습니다. </span>
-			
+			<label class="title">아이디</label> 
+			<input type="text" name="userId" id="userId" maxlength="12"><span> 4~12자의 영문 대 소문자, 숫자를 입력할 수 있습니다.</span>
+			<p id="fn_checkMbrId();"></p>
+		<br>	
 		</div>
 		<div>
-			<div>비밀번호</div> 
-			<input type="password" name="mbrPswd" maxlength="20" onchange="mbrpswdCheck();">
+			<label class="title">비밀번호</label> 
+			<input type="password" name="mbrPswd" maxlength="20" onchange="mbrpswdCheck();"><span>영문(대소문자 구분), 숫자를 반드시 1자 이상 설정하셔야 합니다.</span>
 			<p id="mbrpswdCheck();"></p>
-			<div>영문(대소문자 구분), 특수문자, 숫자를 반드시 1자 이상 포함하여 10~20자로 설정하셔야 합니다.</div>
 		</div>
+		<br>
 		<div>
-			<div>비밀번호 확인</div> 
+			<label class="title">비밀번호 확인</label> 
 			<input type="password" name="pwd" id="mbrpswdConfirm" maxlength="20">
 			<p id="mbrPswdSameCheck"></p>
 		</div>
-		
+		<br>
 		<div>
-			<div>전자우편</div> 
+			<label class="title">전자우편</label> 
 				<input type="text" id="email_in01" name="email_in01" value=""> @ <input type="text" id="email_in02" name="email_in02" readonly="readonly" value=""> 
 					<select id="selectEmail" onchange="fn_selectemail(this);">
 						<option value="select" selected="selected">선택</option>
@@ -59,9 +193,9 @@
 						<option value="hotmail.com">핫메일</option>
 					</select>
 		</div>
-		
+		<br>
 		<div>
-			<div>휴대전화</div>
+			<label class="title">휴대전화</label>
 			<select name="tel2_1" id="tel2_1">
 				<option value selected="selected">선택</option>
 				<option value="010">010</option>
@@ -72,14 +206,18 @@
 				<option value="019">010</option>
 			</select> - <input type="text" name="tel" id="tel2_2" maxlength="4"> - <input type="text" name="tel" id="tel2_3" maxlength="4">
 		</div>
+		<br>
 		<div>
-			<div>성별</div>
-			<label><input type="radio" name="gender" value="M">남</label>
-			<lable><input type="radio" name="gender" value="F">여</lable>  
+			<label class="title">성별</label>
+			<label class="gender">남<input type="radio" name="gender" value="M"></label>
+			<lable class="gender">여<input type="radio" name="gender" value="F"></lable>  
 		</div>
+		<br>
 		
-		<input onclick="fnMain()" type="button" value="취소">
-		<input onclick="fnSubmit()" type="button" value="회원가입">
+		<div class="btn">
+		<input onclick="fnMain()" type="button" value="취소" class="back">
+		<input onclick="fnSubmit()" type="button" value="회원가입" class="go">
+		</div>
 		
 	</form>
 	
@@ -89,6 +227,7 @@
 	
 	
 </body>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
 <script>
 
@@ -159,16 +298,16 @@ if (idCheckDupYn !== "Y") {
 }
 
 var mbrPswdLength = mbrPswd.length;
-var check = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+])[A-Za-z!@#$%^&*()_+]{10,20}$/;
+var check = /^(?=.*[a-zA-Z]){1,20}$/;
 
 
-if (mbrPswdLength < 10 || mbrPswdLength > 20) {
-    mbrPswdCheck.innerHTML = "비밀번호는 10자에서 20자까지 가능합니다.";
+if (mbrPswdLength < 20 || mbrPswdLength > 1) {
+    mbrPswdCheck.innerHTML = "비밀번호는 1자에서 20자까지 가능합니다.";
     document.getElementById('mbrPswd').focus();
     document.getElementById('mbrPswd').value = "";
     return;
 } else if (!check.test(mbrPswd)) {
-    mbrPswdCheck.innerHTML = "비밀번호는 영문(대소문자 구분), 특수문자, 숫자 조합으로 만들어야 합니다.";
+    mbrPswdCheck.innerHTML = "비밀번호는 영문(대소문자 구분), 숫자 조합으로 만들어야 합니다.";
     document.getElementById('mbrPswd').focus();
     document.getElementById('mbrPswd').value = "";
     return;
@@ -252,7 +391,7 @@ function fn_selectemail(obj) {
 	function fnId() {
 		var f = document.user;
 		var param = "userId="+f.userId.value; 
-		location.href = "id-check.jsp?" + param; 
+		location.href = "idCheck.jsp?" + param; 
 	}
 	
 </script>

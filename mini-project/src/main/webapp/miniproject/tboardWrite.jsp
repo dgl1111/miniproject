@@ -11,6 +11,7 @@
 	}
 </style>
 </head>
+<jsp:include page="header.jsp"></jsp:include>
 <body>
 	<div>
 		<h2>새로운 생각쓰기</h2>
@@ -38,6 +39,7 @@
 	</form>
 
 </body>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
 <script>
 	function fnCheck(){

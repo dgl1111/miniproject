@@ -11,6 +11,7 @@
 	}
 </style>
 </head>
+<jsp:include page="header.jsp"></jsp:include>
 <body>
 	<div>
 		<h3>민원신청</h3>
@@ -46,6 +47,7 @@
 		</ul>			
 	</div>
 </body>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
 <script>
 	function fnCheck(){

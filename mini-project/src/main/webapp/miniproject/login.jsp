@@ -5,27 +5,120 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-	<div>회원 로그인</div>
-	<form action="main.jsp" name="login">
-	<div>
-		<input type="text" name="userId" id="userId" maxlength="50" pattern="[A-Za-z0-9]" placeholder="아이디" >
-	</div>
-	<div>
-		<input type="password" name="pwd" id="pwd" maxlength="20" placeholder="비밀번호">
-	</div>
-	<input type="button" onclick="fn_login()" value="로그인">
-	</form>
-</body>
-</html>
-<script>
-	//login
-	function fn_login() {
-		var form = document.login;
-		form.action = "main.jsp"
-		form.submit();
+<style>
+	
+	h3{
+		font-size: 33px;
+	    color: #292929;
+	    line-height: normal;
+	    padding-bottom: 15px;
+	    border-bottom: 1px solid #707070;
+	    margin-top: 0px;
+	    margin-bottom: 23px;
+	    font-weight: 500;
+	    font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	h4{
+		padding: 18px 0;
+		display: block;
+	    color: #333;
+	    font-size: 22px;
+	    font-weight: normal;
+	    border-bottom: 3px solid #333;
+	    text-align: center;
+	    margin-bottom: 20px;
+	    line-height: 18px;
+	    font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	form{
+	
+	 max-width: 1200px;
+        padding: 0px 40px 0px;
+		font-weight: 400;
+	    font-size: 15px;
+	    line-height: 18px;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    position: relative;
+	    height: 100%;
+    	margin: 0 auto;
+	    color: #555;
+	    display: block;
+	    text-align: center;
 	}
 
-			
-</script>
+	
+	input{
+		position: relative;
+		margin-bottom: 9px;
+		height: 60px;
+		width: 100%;
+	    padding: 0 15px;
+	    font-size: 15px;
+	    border: 1px solid #d2d2d2;
+	    text-indent: 5px;
+	    background: #fff;
+	    color: #555;
+	    vertical-align: middle;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    font-weight: 400;
+        line-height: 18px;
+	}
+	
+	button {
+		width: 1232px;
+		height: 50px;
+		font-size: 15px;
+		display: block;
+	    background-color: #318de7;
+	    color: #fff;
+	    font-weight: 400;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    padding: 0;
+	    line-height: 100%;
+	    border-width: 0;
+	}
+	
+	img{
+		margin-right: 10px;
+	    vertical-align: -3px;
+	    transition: all .6s;
+	    max-width: 100%;
+	    height: auto;
+	    border: 0;
+	}
+		
+		
+
+</style>
+</head>
+<jsp:include page="header.jsp"></jsp:include>
+<body>
+	<%@include file="db2.jsp"%>	
+	
+	<%
+		/* session.removeAttribute("userId"); */
+		/* session 삭제하는 방법. 그렇게 많이 안쓴다. */
+		session.invalidate();
+		/* session을 10개 넣더라도 한번에 삭제 가능 */
+		/* out.println(session.getAttribute("userId")); */
+	%>
+	
+	<h3>로그인</h3>
+	
+	
+	<h4>회원 로그인</h4>
+	
+	<form action="loginResult.jsp" >
+	<div>
+		<input type="text" name="id" maxlength="50" pattern="[A-Za-z0-9]" placeholder="아이디">
+	</div>
+	<div>
+		<input type="password" name="pwd" maxlength="20" placeholder="비밀번호">
+	</div>
+	<button type="submit"><img src="../img/login_btn_icon.png" alt=""> 로그인</button>
+	</form>
+</body>
+<jsp:include page="footer.jsp"></jsp:include>
+</html>

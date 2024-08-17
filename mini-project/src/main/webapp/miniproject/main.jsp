@@ -11,11 +11,14 @@
 	}
 	
 	body{
-		min-height: 100vh;
+		max-width: 1920px;
 	}
 	
 	.main{
-		
+		height: 435px;
+    	position: relative;
+    	padding-top: 10px;
+    	margin-top: 45px;
 	}
 		
 	.back{
@@ -38,9 +41,11 @@
 <body>
 		<main>
 			<form class="main">
-				<img src="../img/bottom.png"  alt="" class="bot">
-				<img src="../img/top.png"  alt="" class="top">
-				<img src="../img/main.jpg" alt="" class="back">
+				<div>
+					<img src="../img/bottom.png"  alt="" class="bot">
+					<img src="../img/top.png"  alt="" class="top">
+				</div>
+				<img src="../img/main.jpg" alt="" class="back" style="height: 435;">
 			</form>	
 		</main>
 </body>

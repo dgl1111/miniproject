@@ -7,14 +7,20 @@
 <title>Insert title here</title>
 <style>
 	footer{
+		position: fixed;
+	    margin: 0;
+	    padding: 0;
 		background-color: #f5f7fa;
 		width: 100%;
-		height: 100%;
-		margin: 0px;
+		
 	}
 	
 	.footer_top{
 		border-bottom: 1px solid #e8e8e8;
+	}
+	
+	.footer_top ul{
+		margin-top: 5px;
 	}
 	
 	.footer_top li {
@@ -25,6 +31,7 @@
 	}
 	
 	.footer_bottom {
+		margin-top: 30px;
 		padding-left: 40px;	
 		text-align: center;
 	
@@ -32,7 +39,7 @@
 	
 	.footer_copy {
 		text-align: right;
-		padding: 20px;
+		padding: 30px;
 	}
 	
 	

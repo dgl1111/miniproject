@@ -25,9 +25,10 @@
 	}
 	
 	.header_top ul{
-		margin-right: 100px;
+		margin: 7px;
 		list-style: none;
 		display: inline;
+		padding: 16px 100px 16px 0px;
 	}
 	
 	.header_top li{
@@ -50,7 +51,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 10px 20px 0px 0px;
+		padding: 20px 20px 0px 0px;
 		margin-top: 40px;
 		
 	} 

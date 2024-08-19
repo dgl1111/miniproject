@@ -92,22 +92,21 @@
     	position: relative;
     	display: inline-block;
     }
-      
-    #menuWrap > ul > li > ul {
+     /* 
+     #menuWrap > ul > li > ul {
     	position: absolute;
     	display: none;
     }
-    
+     
     #menuWrap > ul> li:hover > ul{
     	display: block;
     }
     
     #menuWrap > ul > li > ul > li >a{
     	display: block;
-    }
-    
+    } 
 
-    
+     */
     #mainMenu li {
         margin: 0 50px; 
     }
@@ -116,7 +115,21 @@
         text-decoration: none; 
         
     }
+    .menuA:hover #menua{
+    display:block;
+    }
+    #menua{
+    display:none
+    }
     
+    #menua{
+    
+    position: absolute;
+    display: block;
+    left: 9%;
+    width: 50%;
+    
+    }
     
 	
 	
@@ -124,10 +137,23 @@
 </style>
 </head>
 <body style="margin: 0px; padding: 0px;">
+	<%
+	String userId = (String) session.getAttribute("userId");
+	%>
 	<header id="header">
 		<div class="header_top">
 			<ul>
-				<li><a href="login.jsp">로그인</a></li>
+				<% 
+				if (userId != null) {
+				%>
+					<li><a href="javascript:;" onclick="location.href='logout.jsp'">로그아웃</a></li>
+				<%
+				} else {
+				%>
+					<li><a href="login.jsp">로그인</a></li>
+				<%
+				}
+				%>
 				<li><a href="join.jsp">회원가입</a></li>
 				<li><a href=".jsp">국민신문고 소개</a></li>
 			</ul>
@@ -141,16 +167,16 @@
 				</h1>
 				<nav id="menuWrap">
 				<ul id="mainMenu">
-					<li>
-						<a class="menuA"  href="javascript:;">나의 이용내역</a>
-							<ul class="menuA-a">
-								<li>
-									<a href="myList.jsp">나의 민원신청내역</a>
-								</li>
-								<li>
-									<a href="myPage.jsp">나의 정보관리</a>
-								</li>
-							</ul>
+					<li class="menuA">
+						<a href="javascript:;">나의 이용내역</a>
+						<ul id="menua" class="menua">
+							<li>
+								<a href="myList.jsp">나의 민원신청내역</a>
+							</li>
+							<li>
+								<a href="myPage.jsp">나의 정보관리</a>
+							</li>
+						</ul>
 					</li>
 					<li>
 						<a id="menuB"  href="javascript:;">민원서비스</a>

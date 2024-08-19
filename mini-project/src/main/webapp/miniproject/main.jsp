@@ -24,28 +24,18 @@
 	.back{
 		position: relative;
 		width: 100%;
+		height: 435;
 	}
 	
-	.top{
-		position: absolute; 
-		z-index: 2;
-	}
-	.bot{
-		position: absolute;
-		
-		z-index: 1;
-	}
+	
 </style>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <body>
+	
 		<main>
 			<form class="main">
-				<div>
-					<img src="../img/bottom.png"  alt="" class="bot">
-					<img src="../img/top.png"  alt="" class="top">
-				</div>
-				<img src="../img/main.jpg" alt="" class="back" style="height: 435;">
+				<img src="../img/main.jpg" alt="" class="back">
 			</form>	
 		</main>
 </body>

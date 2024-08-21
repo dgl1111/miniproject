@@ -10,7 +10,8 @@
 		padding: 0 0 50px 0;
 	    max-width: 1200px;
 	    height: auto;
-	    margin-left: 200px;
+	    margin-left: 400px;
+	    margin-right: 400px;
 	    font-family: 'Noto Sans KR', sans-serif;
 	    
 		}

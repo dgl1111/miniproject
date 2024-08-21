@@ -100,8 +100,9 @@
 
 </style>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
+
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<%@include file="db2.jsp"%>	
 	
 
@@ -120,8 +121,9 @@
 	<button onclick="fnSubmit()" type="button"><img src="../img/login_btn_icon.png" alt="">로그인</button>
 	</form>
 	</div>
-</body>
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
+
 </html>
 <script>
 function fnSubmit(){

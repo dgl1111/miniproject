@@ -14,6 +14,7 @@
 	  	String id = request.getParameter("userId");
 		ResultSet rs = null;
 		Statement stmt = null;
+		boolean idExists = false;
 		
 		
 		
@@ -24,12 +25,8 @@
 			
 			
 			if(rs.next()){
-				/* next함수가 하는역할 : 다음행이 존재하는지 확인 */
-				out.println("중복된 아이디");
-				
-			
-			}else{
-				out.println("사용가능");
+				idExists = true; 
+				/* out.println("중복사용");  */
 			}
 			
 		} catch(SQLException ex) {
@@ -41,6 +38,19 @@
 	
 </body>
 </html>
+  <script>
+    // ID 중복 여부에 따른 처리
+    <% if (idExists) { %>
+        // 아이디가 중복된 경우
+        window.opener.alert("사용 중인 아이디입니다.");
+    <% } else { %>
+        // 아이디가 사용 가능한 경우
+        window.opener.alert("사용 가능한 아이디입니다.");
+    <% } %>
+
+    // 팝업 창을 닫음
+    window.close();
+    </script>
 
 	
 	

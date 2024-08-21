@@ -10,13 +10,12 @@
 	#header {
 		display: inline;
 		position: relative;
-		flex-direction: column;
-		padding: 30px;
+		top: 0;
+		padding: 0px;
 	}
 	
 	.header_top {
 		display: flex;
-		position:fixed;
 		justify-content: flex-end;
 		padding-right: 30px;
 		background: #033075;
@@ -52,7 +51,7 @@
 		align-items: center;
 		justify-content: center;
 		padding: 20px 20px 0px 0px;
-		margin-top: 40px;
+		margin-top: 20px;
 		
 	} 
 	
@@ -83,14 +82,17 @@
 	} 
 	
 	 #mainMenu {
+	 position: relative;
        	list-style: none;
        	display: inline-block;
       	margin-right: 100px;
+      	width: 100%;
     }
     
     #menuWrap {
-    	position: relative;
+    	 /* position: relative;  */
     	display: inline-block;
+    	
     }
      /* 
      #menuWrap > ul > li > ul {
@@ -115,21 +117,68 @@
         text-decoration: none; 
         
     }
-    .menuA:hover #menua{
-    display:block;
-    }
+    
     #menua{
     display:none
     }
     
-    #menua{
-    
-    position: absolute;
-    display: block;
-    left: 9%;
-    width: 50%;
-    
+    .menuA:hover #menua{
+ 	 	position: absolute; 
+	    display: flex;      
+	    flex-direction: column; 
+	    justify-content: center; 
+	    left: 0;           
+	    line-height: 50px;
+	    z-index: 1;
     }
+    
+    #menub{
+    	display:none;
+    }
+    
+    .menuB:hover #menub{
+	    position: absolute;
+	    display:block;
+	    display: flex;      
+	    flex-direction: column; 
+	    justify-content: center; 
+	    left: 235px;
+	    line-height: 45px;
+	    background-color: white;
+	    z-index: 1;
+    }
+    
+    #menuc{
+    	display:none
+    }
+    
+    .menuC:hover #menuc{
+	    position: absolute;
+	    display:block;
+	    display: flex;      
+	    flex-direction: column; 
+	    justify-content: center; 
+	    left: 442px;          
+	    line-height: 50px;
+	    z-index: 1;
+    }
+    
+   	#menud{
+    display:none
+    }
+    
+    .menuD:hover #menud{
+	    position: absolute;
+	    display:block;
+	    display: flex;      
+	    flex-direction: column; 
+	    justify-content: center; 
+	    left: 630px;          
+	    line-height: 50px;
+	    z-index: 1;
+    }
+    
+    
     
 	
 	
@@ -169,18 +218,18 @@
 				<ul id="mainMenu">
 					<li class="menuA">
 						<a href="javascript:;">나의 이용내역</a>
-						<ul id="menua" class="menua">
+						<ul id="menua">
 							<li>
 								<a href="myList.jsp">나의 민원신청내역</a>
 							</li>
 							<li>
-								<a href="myPage.jsp">나의 정보관리</a>
+								<a href="myPage.jsp?userId=<%=userId%>">나의 정보관리</a>
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a id="menuB"  href="javascript:;">민원서비스</a>
-							<ul class="menuB-b">
+					<li class="menuB">
+							<a href="javascript:;">민원서비스</a>
+							<ul id="menub">
 								<li>
 									<a href="boardWrite.jsp">민원신청</a>
 								</li>
@@ -189,9 +238,9 @@
 								</li>
 							</ul>
 					</li>
-					<li>
-						<a id="menuC"  href="javascript:;">생각참여</a>
-							<ul class="menuC-c">
+					<li class="menuC">
+						<a href="javascript:;">생각참여</a>
+							<ul id="menuc">
 								<li>
 									<a href="tboardWrite.jsp">생각쓰기</a>
 								</li>
@@ -200,9 +249,9 @@
 								</li>
 							</ul>
 					</li>
-					<li>
-						<a id="menuD"  href="javascript:;">이용안내</a>
-							<ul class="menuD-d">
+					<li class="menuD">
+						<a href="javascript:;">이용안내</a>
+							<ul id="menud">
 								<li>
 									<a href="intro.jsp">사이트소개</a>
 								</li>

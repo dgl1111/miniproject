@@ -33,12 +33,11 @@
 						session.setAttribute("status", rs.getString("status"));
 						/* session안에는 key, value 값 들어있다. session은 어느페이지에서든  */
 						if(rs.getString("status").equals("A")){
-							//권한이 A
 							response.sendRedirect("userList.jsp");
 							
 						}else{
 						response.sendRedirect("main.jsp");
-						/* 성공했을떄 응답하는 페이지 */
+						
 					}		
 					
 				}
@@ -48,10 +47,9 @@
 				querytext = "SELECT * FROM TBL_USER " + "WHERE userId= '" + id + "' ";
 				rs = stmt.executeQuery(querytext);
 				if(rs.next()){
-					//아이디는 O, 비밀번호는 X일 경우
-					//session.setItem("userId", data[0].USERID);
+					
 				}else{
-					//없는 아이디로 로그인 시도
+				
 					out.println("아이디 확인");
 						
 				}

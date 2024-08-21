@@ -176,8 +176,9 @@
 	
 </style>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
+
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<div class="body">
 	<div class="top">
 		<h3>민원신청</h3>
@@ -186,7 +187,7 @@
 		<h4>민원내용</h4>
 	</div>
 	<div class="input">
-	<form action="boardList.jsp" name="boardwrite">
+	<form action="board-result.jsp" name="boardwrite">
 		<div class="tit">
 			<div class="inti">민원 제목</div>
 			<input type="text" name="title">
@@ -213,8 +214,9 @@
 	</form>
 	</div>
 	</div>
-</body>
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
+
 </html>
 <script>
 	function fnCheck(){

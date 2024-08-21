@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	div {
-		margin-top : 5px;
-	}
+	
 </style>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
+
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<div>
 		<h2>새로운 생각쓰기</h2>
 	</div>
@@ -37,9 +36,9 @@
 			
 		
 	</form>
-
-</body>
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
+
 </html>
 <script>
 	function fnCheck(){

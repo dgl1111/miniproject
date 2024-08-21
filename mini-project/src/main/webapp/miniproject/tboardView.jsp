@@ -26,7 +26,9 @@
 </style>
 
 </head>
+
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<form action="board-delete.jsp" name="board">
 	<%@include file="db2.jsp"%>	
 	<%
@@ -90,7 +92,9 @@
 		}
 	%>
 	</form>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
+
 </html>
 <script>
 	function fnUpdate() {

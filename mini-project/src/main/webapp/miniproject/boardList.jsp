@@ -72,8 +72,8 @@
 </style>
 
 </head>
-<jsp:include page="header.jsp"></jsp:include>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<%@include file="db2.jsp"%>	
 	<%
 	ResultSet rs = null;
@@ -110,7 +110,6 @@
 				</a>
 			</td>
 			<td>
-			  	<a href="javascript:;" onclick="fnInfo('<%= rs.getString("userId") %>')" style="text-decoration:none; color: black;">
 			  		<%= rs.getString("name") %>
 			  	</a> 
 			 </td>
@@ -127,9 +126,9 @@
 		out.println("SQLException : " + ex.getMessage());
 	}
 	%>
-
-</body>
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
+
 </html>
 <script>
 	function fnView(boardNo) {
